@@ -41,7 +41,7 @@ namespace RazorPagesFullIdentity.Areas.Identity
     {
         public async System.Threading.Tasks.Task SendEmailAsync(string email, string subject, string message)
         {
-            await System.IO.File.WriteAllTextAsync("resetLink.txt", message);
+            await System.IO.File.WriteAllTextAsync("email_from_this_app.txt", message);
         }
     }
 }

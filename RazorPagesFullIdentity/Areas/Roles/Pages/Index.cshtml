@@ -1,0 +1,29 @@
+﻿@page
+@model RazorPagesFullIdentity.Areas.Roles.Pages.IndexModel
+@{
+}
+
+<h1>Roles Page</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Normalized Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model.viewModel.Roles)
+        {
+            <tr>
+                <td>@role.Id</td>
+                <td>@role.Name</td>
+                <td>
+                    @role.NormalizedName
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-area="Roles" asp-page="/Create">Add New Role</a>
