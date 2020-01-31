@@ -25,10 +25,12 @@ namespace RazorPagesFullIdentity.Areas.Identity
                 //services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 //    .AddEntityFrameworkStores<UserManagementContext>();
 
+                // We need  services.AddIdentity<IdentityUser, IdentityRole>() if we're going to use the Authorize(Role="RoleName") functionality
                 services.AddIdentity<AppUser, IdentityRole>()
                     .AddEntityFrameworkStores<UserManagementContext>()
                     .AddDefaultTokenProviders();
 
+                // use for sending emails ex. forgot password link
                 services.AddSingleton<IEmailSender, EmailSender>();
 
             });
@@ -37,9 +39,9 @@ namespace RazorPagesFullIdentity.Areas.Identity
 
     public class EmailSender : IEmailSender
     {
-        public System.Threading.Tasks.Task SendEmailAsync(string email, string subject, string message)
+        public async System.Threading.Tasks.Task SendEmailAsync(string email, string subject, string message)
         {
-            return System.Threading.Tasks.Task.CompletedTask;
+            await System.IO.File.WriteAllTextAsync("resetLink.txt", message);
         }
     }
 }
