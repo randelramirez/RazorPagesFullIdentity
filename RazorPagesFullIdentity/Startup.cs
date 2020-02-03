@@ -40,7 +40,7 @@ namespace RazorPagesFullIdentity
                 options.LogoutPath = "/Identity/Account/Logout";
             });
 
-            services.AddScoped<RoleManager<IdentityRole>, RoleManager<IdentityRole>>();
+            //services.AddScoped<RoleManager<IdentityRole>, RoleManager<IdentityRole>>();
 
         }
 
